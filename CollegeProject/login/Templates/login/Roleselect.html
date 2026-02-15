@@ -1,0 +1,15 @@
+{% extends 'login/Log.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="left-panel">
+        <h1>Hangout</h1>
+        <p>Where Restaurants & Customers Connect 🍽️</p>
+    </div>
+    <div class="right-panel">
+        <h2>Select Your Role</h2>
+        <a href="{% url 'customerauth' %}" class="btn">Continue as Customer</a>
+        <a href="{% url 'restaurantauth' %}" class="btn">Continue as Restaurant</a>
+    </div>
+</div>
+{% endblock %}
