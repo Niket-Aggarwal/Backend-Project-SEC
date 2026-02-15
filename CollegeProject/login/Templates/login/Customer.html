@@ -1,0 +1,43 @@
+{% extends 'login/Log.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="slide">
+        <button class="btn" id="btn1">Sign In</button>
+        <button class="btn" id="btn2">Sign Up</button>
+        <a href="{% url 'selectrole' %}" class="btn">← Back</a>
+    </div>
+    <div class="right-panel">
+        <h2>Customer Account sign up</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="submit-btn">Sign In</button>
+        </form>
+        <br>
+    </div>
+    <div class="right-panel">
+        <h2>Customer Account</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="submit-btn">Sign In</button>
+        </form>
+        <br>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    const btn1 = document.querySelector("#btn1");
+    const btn2 = document.querySelector("#btn2");
+    const slide = document.querySelector(".slide");
+    btn2.addEventListener("click", () => {
+        slide.style.transform = "translateX(0)";
+    });
+    btn1.addEventListener("click", () => {
+        slide.style.transform = "translateX(100%)";
+    });
+</script>
+{% endblock %}
