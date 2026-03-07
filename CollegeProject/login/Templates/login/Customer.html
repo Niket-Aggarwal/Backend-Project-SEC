@@ -2,42 +2,53 @@
 
 {% block content %}
 <div class="container">
-    <div class="slide">
-        <button class="btn" id="btn1">Sign In</button>
-        <button class="btn" id="btn2">Sign Up</button>
-        <a href="{% url 'selectrole' %}" class="btn">← Back</a>
+    <div class="slide" id="slide">
+        <h2>Customer Portal</h2>
+        <button id="signinBtn">Sign Up</button>
+        <button id="signupBtn">Sign In</button>
+        <a href="{% url 'selectrole' %}" class="back">← Back</a>
     </div>
     <div class="right-panel">
-        <h2>Customer Account sign up</h2>
+        <h2>Customer Sign In</h2>
         <form method="POST">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit" class="submit-btn">Sign In</button>
+            {% csrf_token %}
+            {{ signin_form.username }}
+            <div class="err" style="color:red">{{ signin_form.username.errors }}</div>
+            {{ signin_form.password }}
+            <div class="err" style="color:red">{{ signin_form.password.errors }}</div>
+            <div class="err" style="color:red">{{ signin_form.non_field_errors }}</div>
+            <button type="submit" name="signin" class="submit-btn">Sign In</button>
         </form>
-        <br>
     </div>
     <div class="right-panel">
-        <h2>Customer Account</h2>
+        <h2>Create Customer Account</h2>
         <form method="POST">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit" class="submit-btn">Sign In</button>
+            {% csrf_token %}
+            {{ signup_form.username }}
+            <div class="err" style="color:red">{{ signup_form.name.errors }}</div>
+            {{ signup_form.password }}
+            <div class="err" style="color:red">{{ signup_form.password.errors }}</div>
+            {{ signup_form.phone_number }}
+            <div class="err" style="color:red">{{ signup_form.phone_number.errors }}</div>
+            {{ signup_form.pincode }}
+            <div class="err" style="color:red">{{ signup_form.pincode.errors }}</div>
+            <button type="submit" name="signup" class="submit-btn">Sign Up</button>
         </form>
-        <br>
     </div>
 </div>
 {% endblock %}
 
+
 {% block script %}
 <script>
-    const btn1 = document.querySelector("#btn1");
-    const btn2 = document.querySelector("#btn2");
-    const slide = document.querySelector(".slide");
-    btn2.addEventListener("click", () => {
-        slide.style.transform = "translateX(0)";
-    });
-    btn1.addEventListener("click", () => {
-        slide.style.transform = "translateX(100%)";
-    });
+    const slide = document.getElementById("slide")
+    const signin = document.getElementById("signinBtn")
+    const signup = document.getElementById("signupBtn")
+    signup.onclick = () => {
+        slide.classList.add("right")
+    }
+    signin.onclick = () => {
+        slide.classList.remove("right")
+    }
 </script>
 {% endblock %}

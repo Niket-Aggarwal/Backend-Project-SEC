@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.selectrole, name='selectrole'),
     path('customer/', views.customer, name='customerauth'),
     path('restaurant/', views.restaurant, name='restaurantauth'),
+    path("user/",include("user.urls")),
 ]

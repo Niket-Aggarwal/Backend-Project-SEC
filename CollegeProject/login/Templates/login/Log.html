@@ -7,27 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{% static 'Logo/image.png' %}">
     <style>
-        body{
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .err{
+            font-size: 10px;
             margin: 0;
+        }
+        body {
+            margin: 0;
+            height: 100vh;
             background: linear-gradient(135deg, #ff7e5f, #feb47b);
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
         }
         main {
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        h1{
-            text-align: center;
+            height: 90vh;
         }
         .container {
-            width: 950px;
-            height: 550px;
-            background: #fff;
+            width: 900px;
+            height: 520px;
+            background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            display: flex;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            position: relative;
             overflow: hidden;
+            display: flex;
         }
+
+        /* LEFT PANEL */
         .left-panel {
             width: 50%;
             background: linear-gradient(135deg, #fc8269, #dd2476);
@@ -39,44 +54,43 @@
             padding: 40px;
             text-align: center;
         }
-        .slide{
-            position: absolute;
-            width: 35%;
-            height: 87%;
-            background: linear-gradient(135deg, #fc8269, #dd2476);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            transition: transform 0.6s ease-in-out;
-            z-index: 10;
-        }
-        .slide button{
-            width: 140px;
-            background: white;
-            color: #2e7d32;
-            margin: 10px 0;
-            border: none;
-        }
-        .slide button:hover{
-            background: #d436bf;
-        }
-        .left-panel h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
+
+        /* RIGHT PANEL */
         .right-panel {
-            background-color: white;
             width: 50%;
             padding: 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-        h2 {
-            margin-bottom: 20px;
-            text-align: center;
+
+        /* SLIDE PANEL */
+        .slide {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, #fc8269, #dd2476);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transition: 0.6s ease-in-out;
+            z-index: 5;
+        }
+        .slide.right {
+            transform: translateX(100%);
+        }
+        .slide button {
+            width: 150px;
+            padding: 10px;
+            border: none;
+            border-radius: 25px;
+            margin: 10px;
+            cursor: pointer;
+            font-weight: bold;
         }
         .btn {
             width: 80%;
@@ -87,42 +101,66 @@
             cursor: pointer;
             font-weight: bold;
             margin-bottom: 15px;
-            transition: 0.3s;
             text-align: center;
             text-decoration: none;
-            color: red;
+            color: #ff512f;
         }
         .btn:hover {
             background: #ff512f;
             color: white;
+        }
+        .back {
+            width: 35%;
+            padding: 12px;
+            border: 2px solid #ffff;
+            border-radius: 25px;
+            background: transparent;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .back:hover {
+            border: 2px solid #ff512f;
+            background: #ff512f;
         }
         input {
             padding: 12px;
             margin-bottom: 15px;
             border-radius: 25px;
             border: 1px solid #ccc;
-            outline: none;
         }
         .submit-btn {
             padding: 12px;
-            border-radius: 25px;
             border: none;
+            border-radius: 25px;
             background: #ff512f;
             color: white;
             font-weight: bold;
             cursor: pointer;
         }
+        .submit-btn:hover {
+            background: #e64021;
+        }
+        h2 {
+            text-align: center;
+        }
     </style>
     {% block style %}
+
     {% endblock %}
 </head>
 <body>
     <h1>Hangout</h1>
     <main>
-    {% block content %}
-    {% endblock %}
+        {% block content %}
+        
+        {% endblock %}
     </main>
     {% block script %}
+
     {% endblock %}
 </body>
 </html>
