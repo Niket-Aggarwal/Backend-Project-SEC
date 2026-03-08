@@ -12,8 +12,10 @@
         <h2>Customer Sign In</h2>
         <form method="POST">
             {% csrf_token %}
+            <label>Username: </label>
             {{ signin_form.username }}
             <div class="err" style="color:red">{{ signin_form.username.errors }}</div>
+            <label>Password: </label>
             {{ signin_form.password }}
             <div class="err" style="color:red">{{ signin_form.password.errors }}</div>
             <div class="err" style="color:red">{{ signin_form.non_field_errors }}</div>
@@ -24,12 +26,16 @@
         <h2>Create Customer Account</h2>
         <form method="POST">
             {% csrf_token %}
+            <label>Username: </label>
             {{ signup_form.username }}
             <div class="err" style="color:red">{{ signup_form.name.errors }}</div>
+            <label>Password: </label>
             {{ signup_form.password }}
             <div class="err" style="color:red">{{ signup_form.password.errors }}</div>
+            <label>Phone No. : </label>
             {{ signup_form.phone_number }}
             <div class="err" style="color:red">{{ signup_form.phone_number.errors }}</div>
+            <label>Address Pincode: </label>
             {{ signup_form.pincode }}
             <div class="err" style="color:red">{{ signup_form.pincode.errors }}</div>
             <button type="submit" name="signup" class="submit-btn">Sign Up</button>

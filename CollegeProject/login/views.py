@@ -4,8 +4,7 @@ from .models import User
 
 
 def selectrole(request):
-    username = request.session.get("username")
-    return render(request, 'login/Roleselect.html', {"username": username})
+    return render(request, 'login/Roleselect.html')
 
 def customer(request):
     signup_form = CustomerSignupForm()
