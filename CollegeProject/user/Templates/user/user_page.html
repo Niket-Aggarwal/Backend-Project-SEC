@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% block content %}
+<h2 style="text-align: center;">Restaurants</h2>
+
+<div class="restaurants">
+
+{% for r in restaurants %}
+
+<a href="{% url 'restaurant_detail' r.restaurant_name %}">
+
+<div class="card">
+
+<img src="{{ r.photo1.url }}" width="200">
+
+<h3>{{ r.restaurant_name }}</h3>
+
+<p>{{ r.specification }}</p>
+
+<p>{{ r.description|truncatewords:10 }}</p>
+
+</div>
+
+</a>
+
+{% endfor %}
+
+</div>
+{% endblock content %}
