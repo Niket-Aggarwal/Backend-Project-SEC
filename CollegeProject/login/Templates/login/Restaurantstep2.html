@@ -1,0 +1,126 @@
+{% extends 'login/Log.html' %}
+
+{% block style %}
+<style>
+.err{
+    color:red;
+}
+.step2-container{
+    width: 900px;
+    height: 520px;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.25);
+    display:flex;
+    overflow:hidden;
+}
+.step2-left{
+    width:35%;
+    background: linear-gradient(135deg,#fc8269,#dd2476);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+    text-align:center;
+}
+.step2-right{
+    width:65%;
+    padding:30px;
+    overflow-y:auto;
+}
+.step2-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+.step2-form label{
+    grid-column: span 2;
+    font-weight:bold;
+}
+.step2-form input,
+.step2-form textarea{
+    width:100%;
+}
+.full{
+    grid-column: span 2;
+}
+.photo-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+.photo-grid input{
+    margin-bottom:5px;
+}
+.step2-btn{
+    grid-column: span 2;
+    margin-top:10px;
+}
+.back-step2{
+    margin-top:20px;
+    padding:10px 20px;
+    border:2px solid white;
+    border-radius:25px;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+.back-step2:hover{
+    background:white;
+    color:#dd2476;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="step2-container">
+    <div class="step2-left">
+        <h2>Restaurant Setup</h2>
+        <p>
+        Add your restaurant details and photos so customers
+        can discover your place.
+        </p>
+        <a href="/restaurant/" class="back-step2">
+            ← Back
+        </a>
+    </div>
+    <div class="step2-right">
+        <h2>Restaurant Details</h2>
+        <form method="POST" enctype="multipart/form-data" class="step2-form">
+            {% csrf_token %}
+            <label>Pincode</label>
+            {{ form.pincode }}
+            <div class="err">{{ form.pincode.errors }}</div>
+            <label>Total Gathering Capacity</label>
+            {{ form.total_gathering }}
+            <div class="err">{{ form.total_gathering.errors }}</div>
+            <label>Specification</label>
+            {{ form.specification }}
+            <div class="err">{{ form.specification.errors }}</div>
+            <label class="full">Description</label>
+            {{ form.description }}
+            <div class="err full">{{ form.description.errors }}</div>
+            <label class="full">Restaurant Photos</label>
+            <div class="photo-grid full">
+                {{ form.photo1 }}
+                {{ form.photo2 }}
+                {{ form.photo3 }}
+                {{ form.photo4 }}
+                {{ form.photo5 }}
+            </div>
+            <div class="err full">
+                {{ form.photo1.errors }}
+                {{ form.photo2.errors }}
+                {{ form.photo3.errors }}
+                {{ form.photo4.errors }}
+                {{ form.photo5.errors }}
+            </div>
+            <button type="submit" class="submit-btn step2-btn">
+                Register Restaurant
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
