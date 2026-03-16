@@ -1,56 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<nav class="navbar">
+    <div class="logo">HangOut</div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+    <input type="text" class="search" placeholder="Search restaurants...">
 
-        /* ===== NAVBAR ===== */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 40px;
-            background-color: #ff5a5f;
-            color: white;
-        }
+    <div class="profile">👤</div>
+</nav>
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        .search {
-            width: 40%;
-            padding: 8px;
-            border-radius: 5px;
-            /* border: none; */
-        }
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 40px;
+        background: linear-gradient(90deg, #ff5a5f, #ff7b7f);
+        color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
 
-        .profile {
-            font-size: 22px;
-            cursor: pointer;
-        }
-    </style>
-</head>
+    .logo {
+        font-size: 28px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
 
-<body>
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar">
-        <div class="logo">HangOut</div>
+    .search {
+        width: 40%;
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        font-size: 15px;
+    }
 
-        <input type="text" class="search" placeholder="Search restaurants...">
+    .search:focus {
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+    }
 
-        <div class="profile">👤</div>
-    </nav>
-</body>
+    .profile {
+        font-size: 24px;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 8px 12px;
+        border-radius: 50%;
+        transition: 0.3s;
+    }
 
-</html>
+    .profile:hover {
+        background-color: rgba(255, 255, 255, 0.35);
+    }
+</style>
