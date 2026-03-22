@@ -1,80 +1,89 @@
 {% extends "main.html" %}
-
+{% block title %}Restaurants | HangOut{% endblock %}
 {% block content %}
 
 <style>
-    .restaurant-page {
-        padding: 40px 30px;
-        min-height: 100vh;
-        background-color: rgb(253, 236, 238);
-    }
+  .restaurant-page {
+    padding: 30px 20px;
+    min-height: 100vh;
+    background-color: #fff7f0;
+  }
 
-    .restaurant-title {
-        text-align: center;
-        font-size: 32px;
-        color: #222;
-        margin-bottom: 30px;
-    }
+  .restaurant-title {
+    text-align: center;
+    font-size: 30px;
+    color: #222;
+    margin-bottom: 25px;
+  }
 
-    .restaurants {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 25px;
-    }
+  .restaurants {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
 
-    .card {
-        background-color: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        padding-bottom: 15px;
-    }
+  .card {
+    background-color: #ffffff;
+    border: 1px solid #f3e2d5;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    width: 90%;
+    transition: 0.3s;
+  }
 
-    .card a {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-    }
+  .card:hover {
+    box-shadow: 7px 13px 12px rgb(155 118 118 / 69%);
+    transform: translateY(-3px);
+  }
 
-    .card img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-    }
+  .card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
 
-    .card h3 {
-        font-size: 20px;
-        color: #222;
-        margin: 15px 15px 8px;
-    }
+  .card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+  }
 
-    .card p {
-        font-size: 14px;
-        color: #555;
-        margin: 6px 15px;
-        line-height: 1.5;
-    }
+  .card h3 {
+    font-size: 18px;
+    color: #222;
+    margin: 10px 12px 5px;
+  }
 
-    .card:hover {
-        box-shadow: 7px 13px 12px rgb(155 118 118 / 69%);
-    }
+  .card p {
+    font-size: 13px;
+    color: #555;
+    margin: 4px 12px;
+    line-height: 1.4;
+  }
+
+  .link {
+    text-decoration: none;
+    color: black;
+  }
 </style>
 
 <div class="restaurant-page">
-    <h2 class="restaurant-title">Restaurants</h2>
-
-    <div class="restaurants">
-        {% for r in restaurants %}
-        <div class="card">
-            <a href="{% url 'restaurant_detail' r.restaurant_name %}">
-                <img src="{{ r.photo1.url }}" alt="{{ r.restaurant_name }}">
-                <h3>{{ r.restaurant_name }}</h3>
-                <p><strong>{{ r.specification }}</strong></p>
-                <p>{{ r.description|truncatewords:10 }}</p>
-            </a>
-        </div>
-        {% endfor %}
+  <h2 class="restaurant-title">Restaurants</h2>
+    
+  <div class="restaurants">
+    {% for r in restaurants %}
+    <div class="card restaurant-item">
+      <a href="{% url 'restaurant_detail' r.restaurant_name %}" class="link">
+        <img src="{{ r.photo1.url }}" alt="{{ r.restaurant_name }}" />
+        <h3>{{ r.restaurant_name }}</h3>
+        <p><strong>{{ r.specification }}</strong></p>
+        <p>{{ r.description|truncatewords:5 }}</p>
+      </a>
     </div>
+    {% endfor %}
+  </div>
 </div>
 
 {% endblock content %}
