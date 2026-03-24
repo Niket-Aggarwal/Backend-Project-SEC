@@ -1,5 +1,7 @@
 <nav class="navbar">
-    <div class="logo"><span>H</span>ang<span>O</span>ut</div>
+    <a href="{% url 'user_page' %}">
+        <div class="logo"><span>H</span>ang<span>O</span>ut</div>
+    </a>
 
     <form action="{% url 'user_page' %}" method="GET" class="search-form">
         <input type="text" name="q" class="search" placeholder="Search Restaurants, foods, location" value="{{ request.GET.q }}">
@@ -9,6 +11,9 @@
 </nav>
 
 <style>
+    a{
+     text-decoration: none;
+    }
     * {
         margin: 0;
         padding: 0;
