@@ -4,10 +4,16 @@
     </a>
 
     <form action="{% url 'user_page' %}" method="GET" class="search-form">
-        <input type="text" name="q" class="search" placeholder="Search Restaurants, foods, location" value="{{ request.GET.q }}">
+        <input type="text" name="q" class="search" placeholder="Search Restaurants, foods, location,Birthday etc." value="{{ request.GET.q }}">
     </form>
 
-    <div class="profile">👤</div>
+    <div class="profile-menu">
+        <div class="profile">👤</div>
+        <div class="dropdown-menu">
+            <a href="{% url 'logout' %}">Log Out</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{% url 'delete' %}">Delete</a>
+        </div>
+    </div>
 </nav>
 
 <style>
