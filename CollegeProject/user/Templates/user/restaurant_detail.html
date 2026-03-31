@@ -1,108 +1,120 @@
-{% extends "main.html" %}
-{% block title %}{{ restaurant.restaurant_name }} | HangOut{% endblock %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ restaurant.restaurant_name }} | HangOut</title>
+    {% comment %} favicon icon niche {% endcomment %}
+    <link rel="icon" href="/static/Logo/image.png" type="image/png">
 
-<style>
-    .detail-page {
-        padding: 40px 20px;
-        min-height: 100vh;
-    }
+    <style>
+        .detail-page {
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
 
-    .detail-container {
-        max-width: 1000px;
-        margin: auto;
-        background-color: white;
-        border-radius: 15px;
-        padding: 30px;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-    }
+        .detail-container {
+            max-width: 1000px;
+            margin: auto;
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        }
 
-    .detail-title {
-        text-align: center;
-        font-size: 34px;
-        color: #222;
-        margin-bottom: 25px;
-    }
+        .detail-title {
+            text-align: center;
+            font-size: 34px;
+            color: #222;
+            margin-bottom: 25px;
+        }
 
-    .main-image {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-        border-radius: 12px;
-        margin-bottom: 25px;
-    }
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
 
-    .detail-text {
-        margin-bottom: 25px;
-    }
+        .detail-text {
+            margin-bottom: 25px;
+        }
 
-    .detail-text p {
-        font-size: 16px;
-        color: #444;
-        line-height: 1.7;
-        margin-bottom: 12px;
-    }
+        .detail-text p {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
 
-    .detail-text strong {
-        color: #222;
-    }
+        .detail-text strong {
+            color: #222;
+        }
 
-    .gallery-title {
-        font-size: 24px;
-        color: #222;
-        margin: 25px 0 15px;
-    }
+        .gallery-title {
+            font-size: 24px;
+            color: #222;
+            margin: 25px 0 15px;
+        }
 
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
-        margin-bottom: 30px;
-    }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
 
-    .gallery img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 10px;
-    }
+        .gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
 
-    .submit-btn {
-        display: block;
-        margin: 0 auto;
-        padding: 12px 28px;
-        background-color: #ff5a5f;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-</style>
+        .submit-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 12px 28px;
+            background-color: #ff5a5f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
 
-<div class="detail-page">
-    <div class="detail-container">
-        <h1 class="detail-title">{{ restaurant.restaurant_name }}</h1>
+    {% include "Navbar.html" %}
 
-        <img src="{{ restaurant.photo1.url }}" alt="{{ restaurant.restaurant_name }}" class="main-image">
+    <div class="detail-page">
+        <div class="detail-container">
+            <h1 class="detail-title">{{ restaurant.restaurant_name }}</h1>
 
-        <div class="detail-text">
-            <p><strong>Description:</strong> {{ restaurant.description }}</p>
-            <p><strong>Specification:</strong> {{ restaurant.specification }}</p>
-            <p><strong>Address:</strong> {{ restaurant.address }}</p>
+            <img src="{{ restaurant.photo1.url }}" alt="{{ restaurant.restaurant_name }}" class="main-image">
+
+            <div class="detail-text">
+                <p><strong>Description:</strong> {{ restaurant.description }}</p>
+                <p><strong>Specification:</strong> {{ restaurant.specification }}</p>
+                <p><strong>Address:</strong> {{ restaurant.address }}</p>
+            </div>
+
+            <h2 class="gallery-title">More Photos</h2>
+
+            <div class="gallery">
+                <img src="{{ restaurant.photo2.url }}" alt="Photo 2">
+                <img src="{{ restaurant.photo3.url }}" alt="Photo 3">
+                <img src="{{ restaurant.photo4.url }}" alt="Photo 4">
+                <img src="{{ restaurant.photo5.url }}" alt="Photo 5">
+            </div>
+
+            <button class="submit-btn">BOOK</button>
         </div>
-
-        <h2 class="gallery-title">More Photos</h2>
-
-        <div class="gallery">
-            <img src="{{ restaurant.photo2.url }}" alt="Photo 2">
-            <img src="{{ restaurant.photo3.url }}" alt="Photo 3">
-            <img src="{{ restaurant.photo4.url }}" alt="Photo 4">
-            <img src="{{ restaurant.photo5.url }}" alt="Photo 5">
-        </div>
-
-        <button class="submit-btn">BOOK</button>
     </div>
-</div>
 
-{% endblock content %}
+    {% include "footer.html" %}
+
+</body>
+</html>

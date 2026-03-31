@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from login.models import Restaurant
+from login.models import User,Restaurant
 from django.db.models import Q
 from django.contrib.auth import logout
 
@@ -31,7 +31,6 @@ def logoutPage(request):
     return redirect('selectrole')
 
 def delete_account(request):
-    user=request.user
-    logout(request)
-    user.delete()
+    User.objects.filter(username=request.session.get("username")).delete()
+    request.session.flush()
     return redirect('selectrole')
