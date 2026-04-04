@@ -2,75 +2,75 @@
 
 {% block style %}
 <style>
-.err{
-    color:red;
-}
-.step2-container{
-    width: 900px;
-    height: 520px;
-    background:white;
-    border-radius:20px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.25);
-    display:flex;
-    overflow:hidden;
-}
-.step2-left{
-    width:35%;
-    background: linear-gradient(135deg,#fc8269,#dd2476);
-    color:white;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    padding:30px;
-    text-align:center;
-}
-.step2-right{
-    width:65%;
-    padding:30px;
-    overflow-y:auto;
-}
-.step2-form{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-.step2-form label{
-    grid-column: span 2;
-    font-weight:bold;
-}
-.step2-form input,
-.step2-form textarea{
-    width:100%;
-}
-.full{
-    grid-column: span 2;
-}
-.photo-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-.photo-grid input{
-    margin-bottom:5px;
-}
-.step2-btn{
-    grid-column: span 2;
-    margin-top:10px;
-}
-.back-step2{
-    margin-top:20px;
-    padding:10px 20px;
-    border:2px solid white;
-    border-radius:25px;
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
-.back-step2:hover{
-    background:white;
-    color:#dd2476;
-}
+    .err {
+        color: red;
+    }
+    .step2-container {
+        width: 900px;
+        height: 520px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        display: flex;
+        overflow: hidden;
+    }
+    .step2-left {
+        width: 35%;
+        background: linear-gradient(135deg, #fc8269, #dd2476);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+        text-align: center;
+    }
+    .step2-right {
+        width: 65%;
+        padding: 30px;
+        overflow-y: auto;
+    }
+    .step2-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    .step2-form label {
+        grid-column: span 2;
+        font-weight: bold;
+    }
+    .step2-form input,
+    .step2-form textarea {
+        width: 100%;
+    }
+    .full {
+        grid-column: span 2;
+    }
+    .photo-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .photo-grid input {
+        margin-bottom: 5px;
+    }
+    .step2-btn {
+        grid-column: span 2;
+        margin-top: 10px;
+    }
+    .back-step2 {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: 2px solid white;
+        border-radius: 25px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .back-step2:hover {
+        background: white;
+        color: #dd2476;
+    }
 </style>
 {% endblock %}
 
@@ -79,8 +79,8 @@
     <div class="step2-left">
         <h2>Restaurant Setup</h2>
         <p>
-        Add your restaurant details and photos so customers
-        can discover your place.
+            Add your restaurant details and photos so customers
+            can discover your place.
         </p>
         <a href="/restaurant/" class="back-step2">
             ← Back

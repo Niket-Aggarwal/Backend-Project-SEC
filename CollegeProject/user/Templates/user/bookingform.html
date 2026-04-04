@@ -1,0 +1,63 @@
+{%include 'Navbar.html'%}
+{% block title %}
+<title>{{ restaurant.restaurant_name }} | HangOut</title>
+{% endblock %}
+{% block content %}
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 25px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    input,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #ff5a5f;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+</style>
+<div class="form-container">
+    <h2>Book Table at {{ restaurant.restaurant_name }}</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Date</label>
+            {{ form.date }}
+        </div>
+        <div class="form-group">
+            <label>Time</label>
+            {{ form.time }}
+        </div>
+        <div class="form-group">
+            <label>No. of People</label>
+            {{ form.no_of_people }}
+        </div>
+        <div class="form-group">
+            <label>Specification</label>
+            {{ form.specification }}
+        </div>
+        <button type="submit">Confirm Booking</button>
+    </form>
+</div>
+{% endblock %}
+{%include 'footer.html'%}

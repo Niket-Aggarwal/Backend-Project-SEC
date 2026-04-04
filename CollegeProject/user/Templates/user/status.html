@@ -1,0 +1,122 @@
+{% extends "main.html" %}
+{% block title %}My Bookings | HangOut{% endblock %}
+{% block content %}
+
+<style>
+.booking-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 10px;
+}
+.booking-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #222;
+}
+.booking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+.booking-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    border-left: 6px solid #ff5a5f;
+}
+.booking-card:hover {
+    transform: translateY(-5px);
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-header h3 {
+    font-size: 20px;
+    color: #222;
+}
+.status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.pending {
+    background-color: #ffe5b4;
+    color: #a65b00;
+}
+.approved {
+    background-color: #d4f8d4;
+    color: #1b7f1b;
+}
+.rejected {
+    background-color: #ffd6d6;
+    color: #a10000;
+}
+.card-body {
+    margin-top: 15px;
+}
+.card-body p {
+    font-size: 14px;
+    color: #555;
+    margin: 6px 0;
+}
+.amount-box {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #f9f9f9;
+    border: 1px dashed #ccc;
+}
+.amount {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff5a5f;
+}
+.empty {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+}
+</style>
+<div class="booking-container">
+    <h2 class="booking-title">My Bookings</h2>
+    <div class="booking-grid">
+        {% for b in bookings %}
+        <div class="booking-card">
+            <div class="card-header">
+                <h3>{{ b.restaurant.restaurant_name }}</h3>
+                <span class="status {{ b.status }}">
+                    {{ b.status }}
+                </span>
+            </div>
+            <div class="card-body">
+                <p><strong>Date:</strong> {{ b.date }}</p>
+                <p><strong>Time:</strong> {{ b.time }}</p>
+                <p><strong>Guests:</strong> {{ b.no_of_people }}</p>
+                <p><strong>Note:</strong> {{ b.specification }}</p>
+                <p><strong>📍 Address:</strong> {{ b.restaurant.address }}</p>
+                <p><strong>📞 Phone:</strong> {{ b.restaurant.phone_number }}</p>
+            </div>
+            <div class="amount-box">
+                {% if b.status == 'approved' %}
+                    <p class="amount">₹ {{ b.amount }}</p>
+                    <p>Scan QR to complete payment</p>
+                {% elif b.status == 'pending' %}
+                    <p>⏳ Waiting for approval</p>
+                {% else %}
+                    <p>❌ Booking rejected</p>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+            <p class="empty">No bookings yet 😔</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
