@@ -11,6 +11,7 @@ class Booking(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
+    endtime = models.TimeField(null=True,blank=True)
     no_of_people = models.IntegerField()
     specification = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')

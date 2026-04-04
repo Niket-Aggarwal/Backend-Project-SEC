@@ -1,7 +1,9 @@
-{%include 'Navbar.html'%}
+{% extends "Main.html" %}
+
 {% block title %}
-<title>{{ restaurant.restaurant_name }} | HangOut</title>
+{{ restaurant.restaurant_name }} | HangOut
 {% endblock %}
+
 {% block content %}
 <style>
     .form-container {
@@ -47,6 +49,10 @@
         <div class="form-group">
             <label>Time</label>
             {{ form.time }}
+        </div>
+        <div class="form-group">
+            <label>Last Time</label>
+            {{ form.endtime }}
         </div>
         <div class="form-group">
             <label>No. of People</label>
