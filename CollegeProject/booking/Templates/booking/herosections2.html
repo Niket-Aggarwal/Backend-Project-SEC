@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hero section</title>
+    <style>
+        .hero {
+            height:45vh;
+            text-align: center;
+            padding: 100px 20px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 18px;
+            margin: 15px 0 25px;
+        }
+        .hero button {
+            padding: 12px 24px;
+            background-color: #ff5a5f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .hero button:hover {
+            background-color: #e14a4f;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <h1><strong>{{restaurant.restaurant_name}}</strong></h1>
+        <h1>Bookings</h1>
+        
+    </section>
+</body>
+
+</html>

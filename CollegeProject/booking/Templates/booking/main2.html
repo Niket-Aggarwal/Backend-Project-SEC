@@ -1,0 +1,31 @@
+{% load static %} 
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HangOut</title>
+    <link rel="icon" type="image/png" href="{% static 'Logo/image.png' %}">
+    <style>
+      html,body {
+        height: 100%;
+        margin: 0;
+        background-color: #ffeaea;
+      }
+      .page-container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      footer {
+        margin-top: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-container">
+      {%include 'booking/navbar2.html'%} {%include 'booking/heroSections2.html'%} {%block content%}
+      {%endblock%} {%include 'footer.html'%}
+    </div>
+  </body>
+</html>
