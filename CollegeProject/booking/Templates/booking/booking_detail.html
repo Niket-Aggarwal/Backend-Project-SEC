@@ -1,0 +1,80 @@
+{% extends "booking/main2.html" %}
+{% block content %}
+
+<style>
+.container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.box p {
+    margin: 8px 0;
+}
+
+input {
+    padding: 6px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.approve {
+    background: green;
+}
+
+.reject {
+    background: red;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+</style>
+
+<div class="container">
+<div class="box">
+
+<h2>Booking Details</h2>
+
+<p><b>User:</b> {{ booking.user.username }}</p>
+<p><b>Date:</b> {{ booking.date }}</p>
+<p><b>Time:</b> {{ booking.time }}</p>
+<p><b>People:</b> {{ booking.no_of_people }}</p>
+<p><b>Spec:</b> {{ booking.specification }}</p>
+<p><b>Status:</b> {{ booking.status }}</p>
+<p><b>Amount:</b> {{ booking.amount }}</p>
+
+<form method="POST" action="{% url 'updatebooking' booking.id %}">
+    {% csrf_token %}
+
+    <label><b>Enter Amount:</b></label>
+    <input type="number" name="amount" >
+
+    <button class="btn approve" type="submit" name="status" value="approved">
+        Approve
+    </button>
+
+    <button class="btn reject" type="submit" name="status" value="rejected">
+        Reject
+    </button>
+</form>
+
+</div>
+</div>
+
+{% endblock content %}

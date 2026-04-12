@@ -1,5 +1,74 @@
 {% extends "booking/main2.html" %}
 {% block content %}
 
+<style>
+.container {
+    max-width: 800px;
+    margin: auto;
+}
 
-{% endblock content %}
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    display: inline-block;
+    margin: 15px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    background: #e4ecf8;  
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.status {
+    font-weight: bold;
+}
+
+.pending { color: orange; }
+.approved { color: green; }
+.rejected { color: red; }
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 8px;
+}
+h2{text-align: center;}
+.btn:hover {
+    background: #0056b3;
+    cursor: pointer;
+}
+</style>
+<h2>Your Bookings</h2>
+<div class="container">
+
+
+{% for booking in bookings %}
+<div class="card">
+    
+    <p><b>User:</b> {{ booking.user.username }}</p>
+    <p><b>Date:</b> {{ booking.date }}</p>
+    <p><b>People:</b> {{ booking.no_of_people }}</p>
+    <p><b>Specification:</b> {{ booking.specification }}</p>
+
+    <p class="status">
+        Status: {{ booking.status }}
+    </p>
+
+    <a class="btn" href="{% url 'bookingdetail' booking.id %}">
+        View Details
+    </a>
+
+</div>
+{% empty %}
+<p>No Bookings yet</p>
+{% endfor %}
+</div>
+
+{% endblock %}
