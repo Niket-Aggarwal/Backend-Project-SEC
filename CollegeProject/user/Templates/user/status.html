@@ -126,7 +126,7 @@
                 {% elif b.status == 'pending' %}
                 <p>⏳ Waiting for approval</p>
                 <a href="{% url 'update_booking' b.id %}" class="btn-update">✏️ Update</a>
-                <a href="{% url 'delete_booking' b.id %}" class="btn-delete">🗑️ Delete</a>
+                <a href="{% url 'delete_booking' b.id %}" class="btn-delete">🗑️ Delete</a>  
                 {% else %}
                 <p>❌ Booking rejected</p>
                 <a href="{% url 'delete_booking' b.id %}" class="btn-delete">🗑️ Delete</a>

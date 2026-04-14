@@ -53,7 +53,7 @@ def restaurant(request):
                         restaurant_name=username,
                         password=password
                     )
-                    request.session["username"] = user.restaurant_name
+                    request.session["restaurant_name"] = user.restaurant_name
                     return redirect("/booking/")
                 except Restaurant.DoesNotExist:
                     signin_form.add_error(None, "Invalid Username or Password")
@@ -78,7 +78,7 @@ def restaurant_step2(request):
             restaurant.address = step1_data["address"]
             restaurant.save()
             del request.session["restaurant_data"]
-            request.session["username"] = restaurant.restaurant_name
+            request.session["restaurant_name"] = restaurant.restaurant_name
             return redirect("/booking/")
     context = {"form": form}
     return render(request, "login/RestaurantStep2.html", context)
