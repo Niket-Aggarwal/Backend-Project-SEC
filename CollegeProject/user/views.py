@@ -17,7 +17,8 @@ def userpage(request):
                 Q(description__icontains=q)|
                 Q(address__icontains=q)
                 )
-        context={'restaurants':restaurants}
+        restaurant_count=restaurants.count()
+        context={'restaurants':restaurants,'restaurant_count':restaurant_count}
         return render(request,'user/user_page.html',context)
     else:
         return redirect('/')
