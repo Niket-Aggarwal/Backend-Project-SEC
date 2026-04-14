@@ -24,6 +24,7 @@
 
 .status {
     font-weight: bold;
+    text-transform: capitalize;
 }
 
 .pending { color: orange; }
@@ -39,15 +40,20 @@
     text-decoration: none;
     margin-top: 8px;
 }
-h2{text-align: center;}
+
+h2 {
+    text-align: center;
+}
+
 .btn:hover {
     background: #0056b3;
     cursor: pointer;
 }
 </style>
-<h2>Your Bookings</h2>
-<div class="container">
 
+<h2>Your Bookings</h2>
+
+<div class="container">
 
 {% for booking in bookings %}
 <div class="card">
@@ -57,7 +63,11 @@ h2{text-align: center;}
     <p><b>People:</b> {{ booking.no_of_people }}</p>
     <p><b>Specification:</b> {{ booking.specification }}</p>
 
-    <p class="status">
+    <!-- 🔥 YAHI MAIN CHANGE -->
+    <p class="status 
+        {% if booking.status == 'approved' %}approved
+        {% elif booking.status == 'rejected' %}rejected
+        {% else %}pending{% endif %}">
         Status: {{ booking.status }}
     </p>
 
@@ -66,9 +76,11 @@ h2{text-align: center;}
     </a>
 
 </div>
+
 {% empty %}
 <p>No Bookings yet</p>
 {% endfor %}
+
 </div>
 
 {% endblock %}

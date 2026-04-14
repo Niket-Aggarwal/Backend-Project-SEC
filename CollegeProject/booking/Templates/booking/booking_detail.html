@@ -1,48 +1,110 @@
-{% extends "booking/main2.html" %}
+{% include "booking/navbar2.html" %}
 {% block content %}
 
 <style>
 .container {
-    max-width: 700px;
-    margin: auto;
+    max-width: 650px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
 }
 
 .box {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: #fde7e7;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
-.box p {
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
     margin: 8px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.value {
+    color: #555;
+}
+
+.status {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.approved { color: green; }
+.rejected { color: red; }
+.pending { color: orange; }
+
+.amount {
+    text-align: center;
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+form {
+    margin-top: 20px;
+    text-align: center;
 }
 
 input {
-    padding: 6px;
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    padding: 8px;
+    width: 80%;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
 }
 
 .btn {
-    padding: 8px 15px;
+    padding: 8px 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     color: white;
     cursor: pointer;
+    margin: 5px;
+    font-weight: bold;
 }
 
-.approve {
-    background: green;
+.approve-btn {
+    background: #28a745;
 }
 
-.reject {
-    background: red;
+.reject-btn {
+    background: #dc3545;
 }
 
 .btn:hover {
-    opacity: 0.8;
+    opacity: 0.85;
+}
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.delete-btn:hover {
+    background: #b52a37;
 }
 </style>
 
@@ -51,30 +113,67 @@ input {
 
 <h2>Booking Details</h2>
 
-<p><b>User:</b> {{ booking.user.username }}</p>
-<p><b>Date:</b> {{ booking.date }}</p>
-<p><b>Time:</b> {{ booking.time }}</p>
-<p><b>People:</b> {{ booking.no_of_people }}</p>
-<p><b>Spec:</b> {{ booking.specification }}</p>
-<p><b>Status:</b> {{ booking.status }}</p>
-<p><b>Amount:</b> {{ booking.amount }}</p>
+
+<div class="detail">
+    <span class="label">User:</span>
+    <span class="value">{{ booking.user.username }}</span>
+</div>
+
+<div class="detail">
+    <span class="label">Date:</span>
+    <span class="value">{{ booking.date }}</span>
+</div>
+
+<div class="detail">
+    <span class="label">Time:</span>
+    <span class="value">{{ booking.time }}</span>
+</div>
+
+<div class="detail">
+    <span class="label">People:</span>
+    <span class="value">{{ booking.no_of_people }}</span>
+</div>
+
+<div class="detail">
+    <span class="label">Specification:</span>
+    <span class="value">{{ booking.specification }}</span>
+</div>
+
+<!-- ✅ STATUS -->
+<div class="status 
+{% if booking.status == 'approved' %}approved
+{% elif booking.status == 'rejected' %}rejected
+{% else %}pending{% endif %}">
+Status: {{ booking.status }}
+</div>
+
+<!-- ✅ APPROVED → amount show -->
+{% if booking.status == "approved" %}
+<div class="amount">Amount: ₹{{ booking.amount }}</div>
+{% endif %}
+
+<!-- ✅ ONLY PENDING → show form -->
+{% if booking.status == "pending" %}
 
 <form method="POST" action="{% url 'updatebooking' booking.id %}">
     {% csrf_token %}
 
-    <label><b>Enter Amount:</b></label>
-    <input type="number" name="amount" >
+    <input type="number" name="amount" placeholder="Enter amount (for approval)">
 
-    <button class="btn approve" type="submit" name="status" value="approved">
+    <br>
+
+    <button class="btn approve-btn" type="submit" name="status" value="approved">
         Approve
     </button>
 
-    <button class="btn reject" type="submit" name="status" value="rejected">
+    <button class="btn reject-btn" type="submit" name="status" value="rejected">
         Reject
     </button>
 </form>
 
+{% endif %}
+
 </div>
 </div>
 
-{% endblock content %}
+{% endblock %}

@@ -50,7 +50,7 @@ def bookingdetail(request, bookingid):
     })
 
 
-def updatebooking(request, bookingid):   # ⚠️ SAME NAME as URL
+def updatebooking(request, bookingid):   
     restaurant_name = request.session.get("restaurant_name")
 
     if not restaurant_name:
@@ -66,3 +66,4 @@ def updatebooking(request, bookingid):   # ⚠️ SAME NAME as URL
         booking.save()
 
     return redirect("booking")
+
