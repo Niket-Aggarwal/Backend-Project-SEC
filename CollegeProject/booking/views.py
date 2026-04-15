@@ -27,12 +27,17 @@ def restaurant_logout(request):
 def delete_restaurant(request):
     restaurant_name = request.session.get("restaurant_name")
 
-    if restaurant_name:
-        restaurant = Restaurant.objects.get(restaurant_name=restaurant_name)
-        restaurant.delete()
+    if not restaurant_name:
+        return redirect('restaurantauth')
+    
+    restaurant=Restaurant.objects.get(restaurant_name=restaurant_name)
 
-    request.session.flush()
-    return redirect("restaurantauth")
+    if request.method == "POST":
+        restaurant.delete()
+        request.session.flush()
+        return redirect("restaurantauth")
+    
+    return render(request,"booking/delete_confirm.html",{'restaurant':restaurant})
 
 
 def bookingdetail(request, bookingid):

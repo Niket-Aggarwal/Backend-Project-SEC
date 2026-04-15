@@ -63,7 +63,6 @@ h2 {
     <p><b>People:</b> {{ booking.no_of_people }}</p>
     <p><b>Specification:</b> {{ booking.specification }}</p>
 
-    <!-- 🔥 YAHI MAIN CHANGE -->
     <p class="status 
         {% if booking.status == 'approved' %}approved
         {% elif booking.status == 'rejected' %}rejected

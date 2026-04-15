@@ -139,7 +139,7 @@ input {
     <span class="value">{{ booking.specification }}</span>
 </div>
 
-<!-- ✅ STATUS -->
+
 <div class="status 
 {% if booking.status == 'approved' %}approved
 {% elif booking.status == 'rejected' %}rejected
@@ -147,12 +147,10 @@ input {
 Status: {{ booking.status }}
 </div>
 
-<!-- ✅ APPROVED → amount show -->
 {% if booking.status == "approved" %}
 <div class="amount">Amount: ₹{{ booking.amount }}</div>
 {% endif %}
 
-<!-- ✅ ONLY PENDING → show form -->
 {% if booking.status == "pending" %}
 
 <form method="POST" action="{% url 'updatebooking' booking.id %}">
