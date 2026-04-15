@@ -7,7 +7,7 @@ def booking_page(request):
     restaurant_name = request.session.get("restaurant_name")
 
     if not restaurant_name:
-        return redirect('restaurantauth')
+        return redirect('selectrole')
 
     restaurant = Restaurant.objects.get(restaurant_name=restaurant_name)
 
@@ -21,14 +21,14 @@ def booking_page(request):
 
 def restaurant_logout(request):
     request.session.flush()
-    return redirect('restaurantauth')
+    return redirect('selectrole')
 
 
 def delete_restaurant(request):
     restaurant_name = request.session.get("restaurant_name")
 
     if not restaurant_name:
-        return redirect('restaurantauth')
+        return redirect('selectrole')
     
     restaurant=Restaurant.objects.get(restaurant_name=restaurant_name)
 
@@ -44,7 +44,7 @@ def bookingdetail(request, bookingid):
     restaurant_name = request.session.get("restaurant_name")
 
     if not restaurant_name:
-        return redirect('restaurantauth')
+        return redirect('selectrole')
 
     restaurant = Restaurant.objects.get(restaurant_name=restaurant_name)
 
@@ -59,7 +59,7 @@ def updatebooking(request, bookingid):
     restaurant_name = request.session.get("restaurant_name")
 
     if not restaurant_name:
-        return redirect("restaurantauth")
+        return redirect("selectrole")
 
     restaurant = Restaurant.objects.get(restaurant_name=restaurant_name)
 

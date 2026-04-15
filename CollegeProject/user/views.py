@@ -46,7 +46,7 @@ def delete_user(request):
     if request.method == "POST":
         user.delete()
         request.session.flush()
-        return redirect("selectrole")
+        return redirect("customerauth")
     
     return render(request,"user/delete_confirm.html",{'user':user})
 
