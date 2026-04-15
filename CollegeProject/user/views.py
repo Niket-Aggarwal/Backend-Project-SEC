@@ -35,10 +35,21 @@ def logoutPage(request):
     request.session.flush()
     return redirect('selectrole')
 
-def delete_account(request):
-    User.objects.filter(username=request.session.get("username")).delete()
-    request.session.flush()
-    return redirect('selectrole')
+def delete_user(request):
+    username = request.session.get("username")
+
+    if not username:
+        return redirect('selectrole')
+    
+    user=User.objects.get(username=username)
+
+    if request.method == "POST":
+        user.delete()
+        request.session.flush()
+        return redirect("selectrole")
+    
+    return render(request,"user/delete_confirm.html",{'user':user})
+
 
 def booktable(request, restaurantname):
     if request.session.get('username'):
