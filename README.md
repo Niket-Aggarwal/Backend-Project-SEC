@@ -1,9 +1,50 @@
-# Backend-Project-SEC
-This is the project for SEC-Skill Enhancement Course (Backend) by our college SSCBS in *Django*.
+# 🍽️ Online Restaurant Booking System
 
-### Authors
+## 📌 Overview
+The **Online Restaurant Booking System** is a web-based application built using Django that allows users to browse restaurants and make table reservations online. It also provides functionality for restaurant owners to register and manage their listings.
+
+## 🚀 Features
+
+### 👤 User Features
+
+* User registration and login
+* Browse available restaurants
+* View restaurant details (images, info, etc.)
+* Book tables online
+* View booking status
+* Cancel bookings
+
+### 🍴 Restaurant Features
+
+* Restaurant registration
+* Upload restaurant details and images
+* Manage bookings
+
+### 🔐 Authentication
+* Role-based login system (Customer / Restaurant)
+
+## 🛠️ Tech Stack
+
+* **Backend:** Django (Python)
+* **Frontend:** HTML, CSS, Django Templates
+* **Database:** SQLite3
+* **Media Handling:** Django Media Files
+* **Static Files:** CSS, Images
+
+## 📌 Future Improvements
+
+* Payment integration
+* Email notifications
+* Advanced search & filters
+* Ratings & reviews system
+* Admin dashboard improvements
+
+## 👨‍💻 Author
 Niket Aggarwal-25739
 <br>
 Aunranjan Toppo-25709
 <br>
 Sharad Shukla-25784
+
+## 📄 License
+This project is for educational purposes.
