@@ -85,6 +85,7 @@ All data used in this project is **fake** and created only for **experimental an
 
 ## 👨‍💻 Author
 Niket Aggarwal
+<br/>
 Aunranjan Toppo
 
 ## 📄 License
