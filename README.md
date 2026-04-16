@@ -40,11 +40,10 @@ The **Online Restaurant Booking System** is a web-based application built using 
 * Admin dashboard improvements
 
 ## 👨‍💻 Author
-Niket Aggarwal-25739
+Niket Aggarwal
 <br>
-Aunranjan Toppo-25709
-<br>
-Sharad Shukla-25784
+Aunranjan Toppo
 
 ## 📄 License
 This project is for educational purposes.
+(As a College Backend Project)
